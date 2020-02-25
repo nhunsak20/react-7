@@ -1,4 +1,7 @@
 import React from 'react'
+import Toggle from './Toggle'
+import Square from '../HOCS/Square'
+import ToggleRenderProps from './ToggleRenderProps'
 import '../style.css'
 
 const RenderProps = props => {
@@ -14,6 +17,16 @@ const RenderProps = props => {
           Docs
         </a>
       </h1>
+      <Toggle>
+        <Square isAdmin darkMode />
+      </Toggle>
+
+      <ToggleRenderProps render={(isVisible, setIsVisible) => {
+        return <div>
+          {isVisible && <Square isAdmin />}
+          <button onClick={() => setIsVisible(!isVisible)}>Toggle me on more time</button>
+        </div>
+      }}/>
     </section>
   )
 }
